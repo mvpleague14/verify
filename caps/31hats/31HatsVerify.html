@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+    <title>Authentic ThirtyOne</title>
+    <style>
+        /* --- ESTILOS GENERALES --- */
+        html, body {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%; /* Forzar altura completa */
+            background-color: #000; 
+            color: #fff;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            text-align: center;
+            overflow: hidden; /* CLAVE: Esto bloquea el scroll totalmente */
+            position: fixed; /* Evita el "rebote" en iOS */
+        }
+
+        .wrap {
+            width: 100%;
+            height: 100%;
+            max-width: 480px;
+            margin: 0 auto;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* SECCIÓN DEL PRODUCTO */
+        .product {
+            width: 100%;
+            height: 100%; /* Ocupa todo el alto disponible */
+            display: block;
+            position: relative; 
+            z-index: 1;
+            background-color: #000; 
+        }
+
+        /* CAPA 1: Estilo para el video de fondo */
+        .product video.bg-video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Cubre toda la pantalla sin deformarse */
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0; /* Al fondo */
+        }
+
+        /* --- ESTILOS DEL FOOTER --- */
+        .footer {
+            position: absolute;
+            bottom: 5.5%; /* Distancia desde abajo */
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: center; /* Centrar horizontalmente */
+            z-index: 50; 
+        }
+
+        /* CAPA 2: La Tarjeta / Rectángulo contenedor */
+        .info-card {
+            width: 75%;          /* Ancho ajustado */
+            max-width: 320px;    
+            padding: 20px 15px;
+            
+            /* Estilos del rectángulo */
+            border: 2px solid #fff;
+            border-radius: 38px;
+            background-color: rgba(255, 255, 255, 0.3);
+            
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            backdrop-filter: blur(3px);
+        }
+
+        /* CAPA 3: Los Elementos */
+        .info-card .title {
+            font-size: 1.1rem; 
+            color: #fff;
+            font-weight: 800; 
+            margin-bottom: 10px; 
+            text-shadow: 0 2px 5px rgba(0,0,0,1);
+            letter-spacing: 1px; 
+            width: 100%;
+            word-wrap: break-word;
+        }
+
+        .info-card .check-logo {
+            width: 70px; 
+            height: auto;
+            margin-bottom: 7px; 
+            display: block;
+            filter: drop-shadow(0 2px 5px rgba(0,0,0,0.3));
+        }
+
+        .info-card .scan {
+            font-size: 1rem; 
+            color: #ffffff;
+            font-weight: 600;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.8);
+            margin: 0;
+        }
+        
+        .info-card .scan span {
+            margin-left: 5px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="wrap">
+
+       <div class="product">
+            
+            <a href="https://thirtyonehats.com/" 
+               style="position: absolute; top: 8%; left: 50%; transform: translateX(-50%); width: 35%; z-index: 20; display: block; cursor: pointer;">
+               <img src="https://github.com/mvpleague14/verify/blob/main/imagenes%20gorras/31hatsimagenes/31logometalicobrillante.png?raw=true" 
+                    alt="Logo 31" 
+                    style="width: 100%; height: auto; display: block;">
+            </a>
+
+            <video class="bg-video" autoplay muted loop playsinline>
+                <source src="https://github.com/mvpleague14/verify/blob/main/imagenes%20gorras/ThirtyOne%20Product.mp4?raw=true" type="video/mp4">
+                Tu navegador no soporta video.
+            </video>
+
+            <div class="footer">
+                <div class="info-card">
+                    
+                    <div class="title">Authentic ThirtyOne Product</div>
+
+                    <img class="check-logo" src="https://github.com/mvpleague14/verify/blob/main/imagenes%20gorras/31hatsimagenes/check31hats.png?raw=true" alt="Verified">
+                    
+                    <div class="scan">Scan Count: <span id="visitCount">...</span></div>
+                
+                </div>
+            </div>
+                 
+        </div>
+
+    </div>
+
+    <script>
+        const pageKey = 'contador_31hatsmagoroja'; 
+        let visitCount = localStorage.getItem(pageKey);
+        if (visitCount) {
+            visitCount = parseInt(visitCount) + 1;
+        } else {
+            visitCount = 1;
+        }
+        localStorage.setItem(pageKey, visitCount);
+        document.getElementById('visitCount').innerText = visitCount;
+    </script>
+
+</body>
+</html>
